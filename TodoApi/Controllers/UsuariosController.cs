@@ -20,15 +20,22 @@ namespace TodoApi.Controllers
 
         // GET: api/Usuarios
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UsuarioDTO>>> GetUsuarios()
+        public
+            async  
+                 Task<ActionResult<IEnumerable<UsuarioDTO>>> // tipo de saída ou retorno
+                     GetUsuarios()
         {
             return await _context.Usuarios
                 .Select(cadaItem => ItemToDTO(cadaItem))
                 .ToListAsync();
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<UsuarioDTO>> GetUsuario(long id, long a, int b, Usuario u)
+        [HttpGet("{id}")] 
+        public // tipo de acesso
+            async 
+                Task<ActionResult<UsuarioDTO>> // tipo de saída ou retorno
+                     GetUsuario // nome do método
+                            (long id, long a, int b, Usuario u) // long = tipo de entrada do paramêtro a
         {
             var Usuario = await _context.Usuarios.FindAsync(id);
 
